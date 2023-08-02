@@ -1,0 +1,171 @@
+  LAP:
+    - id: 1
+      active: True
+      function_name: "lap_keras"
+      description: "Uses Keras preprocessing layers and utilities."
+    
+    - id: 2
+      active: False
+      function_name: "lap_pipeline"
+      description: "Creates input pipeline from scratch using 'tf.data'."
+
+
+  DATASET:
+    raw:
+      url: "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
+      seed: 123
+      split: 0.2
+    predict:
+      url: "/home/nilter/Desktop/flower.jpg"
+
+
+  INPUT:
+    image: 
+      dimension:
+        height: 180
+        width: 180
+
+
+  HYPERPARAMETER:
+    convolution_layer:
+      filter: 16
+      kernel: 3
+    scale:  0.00392156862 #1./255
+    dense:
+      neurons: 64
+    epoch: &epoch 20
+    batch:
+        size: 32
+    dropout: 0.2
+    learning_rate:
+      default: 0.001
+      dynamic: True
+      initial_learning_rate: 0.001
+      decay_steps: *epoch
+      decay_rate: 0.95
+      staircase: False
+
+
+  MODEL:   
+    - id: 1
+      active: True
+      name: "Sequential"
+          
+
+  ACTIVATION_FUNCTION:
+    name : "relu"
+
+  OPTIMIZER:
+    - id: 1
+      active: True
+      name: "Adam"
+      parameters:
+        beta_1: 0.9
+        beta_2: 0.999
+        epsilon: 1e-7
+        amsgrad: False
+        weight_decay: null
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
+
+    - id: 2
+      active: False
+      name: "Adadelta"
+      parameters:
+        rho: 0.95
+        epsilon: 1e-7
+        weight_decay: null
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
+
+    - id: 3
+      active: False
+      name: "Adafactor"
+      parameters:
+        beta_2_decay: -0.8
+        epsilon_1: 1e-30
+        epsilon_2: 1e-3
+        clip_threshold: 1.0
+        relative_step: True
+        weight_decay: null
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
+
+    - id: 4
+      active: False
+      name: "Adamax"
+      parameters:
+        beta_1: 0.9
+        beta_2: 0.999
+        epsilon: 1e-7
+        weight_decay: null
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
+
+    - id: 5
+      active: False
+      name: "Adagrad"
+      parameters:
+        initial_accumulator_value: 0.1
+        epsilon: 1e-7
+        weight_decay: null
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
+
+    - id: 6
+      active: False
+      name: "AdamW"
+      parameters:
+        weight_decay: 0.004
+        beta_1: 0.9
+        beta_2: 0.999
+        epsilon: 1e-7
+        amsgrad: False
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
+
+    - id: 7
+      active: False
+      name: "Nadam"
+      parameters:
+        beta_1: 0.9
+        beta_2: 0.999
+        epsilon: 1e-7
+        weight_decay: null
+        clipnorm: null
+        clipvalue: null
+        global_clipnorm: null
+        use_ema: False
+        ema_momentum: 0.99
+        ema_overwrite_frequency: null
+        jit_compile: True
