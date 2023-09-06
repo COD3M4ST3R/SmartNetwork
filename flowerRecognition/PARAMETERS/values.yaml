@@ -1,12 +1,19 @@
+  
+  PROJECT:
+    type: "IMAGE RECOGNITION"
+    target: "Flowers"
+    description: "This project will detect flowers through their images"
+  
   LAP:
     - id: 1
+
       active: True
-      function_name: "lap_keras"
+      name: "lap_keras"
       description: "Uses Keras preprocessing layers and utilities."
     
     - id: 2
       active: False
-      function_name: "lap_pipeline"
+      name: "lap_pipeline"
       description: "Creates input pipeline from scratch using 'tf.data'."
 
 
@@ -28,14 +35,14 @@
 
   HYPERPARAMETER:
     convolution_layer:
-      filter: 16
+      filter: 32
       kernel: 3
     scale:  0.00392156862 #1./255
     dense:
-      neurons: 64
-    epoch: &epoch 20
+      neurons: 128
+    epoch: &epoch 71
     batch:
-        size: 32
+        size: 64
     dropout: 0.2
     learning_rate:
       default: 0.001
@@ -50,10 +57,12 @@
     - id: 1
       active: True
       name: "Sequential"
+      description: "A Sequential model is appropriate for a plain stack of layers where each layer has exactly one input tensor and one output tensor."
           
 
   ACTIVATION_FUNCTION:
     name : "relu"
+
 
   OPTIMIZER:
     - id: 1
